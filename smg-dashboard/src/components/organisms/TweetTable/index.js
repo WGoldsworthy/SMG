@@ -6,20 +6,21 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
+
+import TweetRow from '../../molecules/TweetRow'
+
 class TweetTable extends React.Component {
 
-	constructor(props) {
-		super(props);
-
-		console.log(props.data)
+	constructor(props){
+		super(props)
+		console.log(props)
 	}
 
-
-
-	render(props) {
-		console.log(props)
+	render() {
+		console.log(this.props)
 		return (
-			<div></div>
+			<div className="tweetTable">
+			</div>
 		)
 	}
 }

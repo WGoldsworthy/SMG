@@ -1,4 +1,5 @@
 import React from 'react';
+import usePromise from 'react-promise';
 import {
   Container,
   AppBar 
@@ -7,19 +8,13 @@ import TweetTable from './components/organisms/TweetTable';
 import api from './api'
 import './App.css';
 
-function fetchTweets() {
-  api.getTweets.then(function(response) {
-    console.log(response)
-    return response;
-  })
-}
-
 
 function App() {
+  const {value, loading} = usePromise(api.getTweets)
   return (
     <div className="App">
       <Container>
-        <TweetTable data={fetchTweets()}></TweetTable>
+        <TweetTable {...value}></TweetTable>
       </Container>
     </div>
   );

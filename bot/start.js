@@ -1,8 +1,10 @@
 var Twitter = require('twitter');
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const port = 3001;
 
+app.use(cors());
 
 const client = new Twitter({
   consumer_key: '5bj9IHxE0ZsdtHZGDCSMuCQwo',
