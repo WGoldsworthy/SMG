@@ -10,4 +10,17 @@ api.getTweets = new Promise(function(resolve, reject) {
 	})
 });
 
+api.searchTweets = (query) => new Promise(function(resolve, reject) {
+	api.get('/search?query=' + query).then(res => {
+		resolve(res);
+	});
+})
+
+api.automate = () => {
+	api.post('/automate', {}).then(res => {
+		// console.log(res);
+	})
+}
+
+
 export default api;
