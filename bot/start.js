@@ -2,6 +2,7 @@ var Twitter = require('twitter');
 const express = require('express');
 const cors = require('cors');
 const automator = require('./automator');
+const readTests = require('./tests/readTests');
 const app = express();
 const port = 3001;
 
@@ -98,6 +99,7 @@ app.get('/search', (req, res) => {
     }
     res.send(response);
   });
+  readTests.read();
 })
 
 app.post('/automate', (req, res) => {

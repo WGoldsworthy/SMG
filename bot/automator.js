@@ -1,22 +1,27 @@
 // LaunchAutomator
 
 const { exec } = require('child_process');
-
+var spawn = require('child_process').spawn
 
 module.exports = {
 
 	automate: function() {
 		console.log("Automator Started")
-		exec('cd bot && npm run automate', (err, stdout, stderr) => {
-		  if (err) {
-		    // node couldn't execute the command
-		    return;
-		  }
+				
+		var browserProcess = exec('cd bot && npm run automate');
 
-		  // the *entire* stdout and stderr (buffered)
-		  console.log(`stdout: ${stdout}`);
-		  console.log(`stderr: ${stderr}`);
+		browserProcess.stdout.on('data', function (data) {
+		  console.log(data.toString());
 		});
+
+		browserProcess.stderr.on('data', function (data) {
+		  console.log('ERR: ' + data.toString());
+		});
+
+		browserProcess.on('exit', function (code) {
+		  console.log('child process exited with code ' + code.toString());
+		});
+
 		console.log("automator finished")
 	}
 }

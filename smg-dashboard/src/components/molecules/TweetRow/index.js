@@ -16,7 +16,7 @@ class TweetRow extends React.Component {
 	render() {
 		const tweet = this.props.data;
 		return (
-			<TableRow>
+			<TableRow className="tweetRow">
 				<TableCell>{tweet.text}</TableCell>
 				{tweet.isFollow && 
 					<TableCell>
