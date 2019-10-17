@@ -1,6 +1,6 @@
 import React from 'react';
 import { TextField, Button } from '@material-ui/core'
-import { TweetDataConsumer } from '../../../data/TweetDataContext';
+import { TestDataConsumer } from '../../../data/TestDataContext';
 
 import api from '../../../api';
 
@@ -9,8 +9,8 @@ class Menu extends React.Component {
 		super(props)
 	}
 
-	searchTweets(query) {
-		api.searchTweets(query).then(res => {
+	getScenarios(query) {
+		api.getScenarios().then(res => {
 			console.log(res)
 		});
 	}
@@ -18,17 +18,16 @@ class Menu extends React.Component {
 	render(props) {
 		return (
 			<div className="menu">
-				<TweetDataConsumer>
+				<TestDataConsumer>
 					{ctx => (
 						<TextField 
 							id="search-tweets"
 							label="Search"
-					        onBlur={(e) => ctx.searchTweets(e.target.value)}
+					        // onBlur={(e) => ctx.searchTweets(e.target.value)}
 					        margin="normal"
 						/>
 					)}
-				</TweetDataConsumer>
-				<Button onClick={api.getScenarios}>Scenarios</Button>
+				</TestDataConsumer>
 			</div>
 		)
 	}

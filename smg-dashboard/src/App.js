@@ -3,29 +3,29 @@ import usePromise from 'react-promise';
 import {
   Container,
 } from '@material-ui/core'
-import TweetTable from './components/organisms/TweetTable';
+import TestTable from './components/organisms/TestTable';
 import Menu from './components/organisms/Menu';
-import TweetDataProvider, { TweetDataConsumer } from './data/TweetDataContext';
+import TestDataProvider, { TestDataConsumer } from './data/TestDataContext';
 import api from './api'
 import './App.css';
 
 
 function App() {
-  const {value, loading} = usePromise(api.getTweets)
+  const {value, loading} = usePromise(api.getScenarios)
 
   return (
     <div className="App">
-      <TweetDataProvider>
+      <TestDataProvider>
         <Container>
           <Menu></Menu>
-          <TweetDataConsumer>
+          <TestDataConsumer>
             {ctx => (
-                <TweetTable {...ctx.state.tweets}></TweetTable>
+                <TestTable {...ctx.state.scenarios}></TestTable>
               )
             }
-          </TweetDataConsumer>
+          </TestDataConsumer>
         </Container>
-      </TweetDataProvider>
+      </TestDataProvider>
     </div>
   );
 }
