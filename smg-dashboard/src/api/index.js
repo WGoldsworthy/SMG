@@ -22,5 +22,12 @@ api.automate = () => {
 	})
 }
 
+api.getScenarios = () => {
+	api.get('/tests/scenarios').then(res => {
+		console.log(res);
+		return res;
+	})
+}
+
 
 export default api;

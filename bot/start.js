@@ -99,13 +99,17 @@ app.get('/search', (req, res) => {
     }
     res.send(response);
   });
-  readTests.read();
 })
 
 app.post('/automate', (req, res) => {
   // console.log(req)
   console.log("Automate Request Received.")
   automator.automate();
+})
+
+app.get('/tests/scenarios', (req, res) => {
+  let scenarios = readTests.read();
+  res.send(scenarios);
 })
 
 app.listen(port, () => console.log(`App listening on port: ${port}`))

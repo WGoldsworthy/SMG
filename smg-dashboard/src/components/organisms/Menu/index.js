@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextField } from '@material-ui/core'
+import { TextField, Button } from '@material-ui/core'
 import { TweetDataConsumer } from '../../../data/TweetDataContext';
 
 import api from '../../../api';
@@ -28,6 +28,7 @@ class Menu extends React.Component {
 						/>
 					)}
 				</TweetDataConsumer>
+				<Button onClick={api.getScenarios}>Scenarios</Button>
 			</div>
 		)
 	}
