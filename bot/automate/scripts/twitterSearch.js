@@ -1,10 +1,19 @@
 Feature('Twitter App Search');
 
-Scenario('Check Search @twitter',
-  (I) => {
-    I.amOnPage('http://localhost:3000');
-    I.see('Search')
-    I.waitForElement('#search-tweets');
-    I.fillField('#search-tweets', 'Testing Twitter Search');
-    I.waitForElement('.tweetRow')
-  });
+Scenario('Load test scenarios and check they appear @loadtest',
+	(I) => {
+		I.amOnPage('http://localhost:3000');
+		I.see('Search');
+		I.waitForElement('.testRow');
+		I.see('Load');
+	}
+)
+
+Scenario('Load tests and check the run button appears @loadtestbutton', 
+	(I) -> {
+		I.amOnPage('http://localhost:3000');
+		I.see('Search');
+		I.waitForElement('testRow');
+		I.see('Run');
+	}
+)

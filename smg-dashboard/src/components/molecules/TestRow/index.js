@@ -13,13 +13,20 @@ class TestRow extends React.Component {
 		super(props);
 	}
 
-	render() {
-		const scenario = this.props;
+	runTest = () => {
+		api.automate(this.props.scenario);
+	}
 
-		console.log(scenario)
+	render() {
+		const { scenario } = this.props;
 		return (
-			<TableRow className="tweetRow">
-				<TableCell>{scenario}</TableCell>
+			<TableRow className="testRow">
+				<TableCell>{scenario.title}</TableCell>
+				<TableCell>
+					<Button
+						onClick={this.runTest}
+					>Run</Button>
+				</TableCell>
 			</TableRow>
 		)
 	}

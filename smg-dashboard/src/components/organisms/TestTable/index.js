@@ -11,13 +11,12 @@ class TestTable extends React.Component {
 	}
 
 	render() {
-		const scenarios = this.props;
-		console.log(scenarios)
+		const { scenarios } = this.props;
 		return (
 			<Table className="testTable">
 				<TableBody>
 					{scenarios && scenarios.map((scenario, index) => (
-						<TestRow key={scenario.title} data={scenario.title} ></TestRow>
+						<TestRow key={scenario.title} scenario={scenario}></TestRow>
 					))}
 				</TableBody>
 			</Table>

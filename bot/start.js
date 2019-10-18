@@ -1,16 +1,19 @@
 var Twitter = require('twitter');
 const express = require('express');
 const cors = require('cors');
+var bodyParser = require("body-parser");
 const automator = require('./automator');
 const readTests = require('./tests/readTests');
 const app = express();
 const port = 3001;
 
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.post('/automate', (req, res) => {
-  console.log("Automate Request Received.")
-  automator.automate();
+  automator.automate(req.body);
+  res.send();
 })
 
 app.get('/tests/scenarios', (req, res) => {

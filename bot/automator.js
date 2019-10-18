@@ -5,10 +5,10 @@ var spawn = require('child_process').spawn
 
 module.exports = {
 
-	automate: function() {
-		console.log("Automator Started")
-				
-		var browserProcess = exec('cd bot && npm run automate');
+	automate: function(scenario) {
+		var command = 'cd bot && npm run automate -- --grep "' + scenario.scenario + '"';
+
+		var browserProcess = exec(command);
 
 		browserProcess.stdout.on('data', function (data) {
 		  console.log(data.toString());
@@ -19,9 +19,9 @@ module.exports = {
 		});
 
 		browserProcess.on('exit', function (code) {
-		  console.log('child process exited with code ' + code.toString());
+		  console.log('Child process exited with code ' + code.toString());
 		});
 
-		console.log("automator finished")
+		return;
 	}
 }

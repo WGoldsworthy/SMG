@@ -11,7 +11,7 @@ import './App.css';
 
 
 function App() {
-  const {value, loading} = usePromise(api.getScenarios)
+  // const {value, loading} = usePromise(api.getScenarios)
 
   return (
     <div className="App">
@@ -20,7 +20,7 @@ function App() {
           <Menu></Menu>
           <TestDataConsumer>
             {ctx => (
-                <TestTable {...ctx.state.scenarios}></TestTable>
+                <TestTable scenarios={ctx.state.scenarios}></TestTable>
               )
             }
           </TestDataConsumer>

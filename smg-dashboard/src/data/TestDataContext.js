@@ -23,7 +23,6 @@ class TestDataProvider extends React.Component {
 
 	getScenarios() {
 		api.getScenarios.then(res => {
-			console.log(res)
 			this.setState({scenarios: res.data})
 		});
 	}

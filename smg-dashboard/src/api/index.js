@@ -5,15 +5,16 @@ const api = axios.create({
 });
 
 
-api.automate = () => {
-	api.post('/automate', {}).then(res => {
+api.automate = (scenario) => {
+	console.log(scenario);
+	api.post('/automate', {scenario: scenario.title}).then(res => {
 		// console.log(res);
 	})
 }
 
 api.getScenarios = new Promise(function(resolve, reject) {
 	api.get('/tests/scenarios').then(res => {
-		return res;
+		resolve(res);
 	})
 });
 
