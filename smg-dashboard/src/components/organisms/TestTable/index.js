@@ -12,13 +12,16 @@ class TestTable extends React.Component {
 
 	render() {
 		const { scenarios } = this.props;
+		console.log(scenarios)
 		return (
 			<Table className="testTable">
 				<TableBody>
-					{scenarios && scenarios.map((scenario, index) => (
+				{scenarios.length > 0 && scenarios.map((scenarioGroup, index) => (
+					scenarioGroup.map((scenario, index) => (
 						<TestRow key={scenario.title} scenario={scenario}></TestRow>
-					))}
-				</TableBody>
+					))
+				))}
+				</TableBody>	
 			</Table>
 		)
 	}

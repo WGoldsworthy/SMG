@@ -20,46 +20,21 @@ const processScenarios = function(data) {
 
 	var startIndex = 0, index, indices = [];
 	while ((index = str.indexOf(searchStr, startIndex)) > -1) {
-        indices.push(index);
         startIndex = index + searchStr.length;
 
         let scenario = {};
 
-	    let scenarioPreString = data.toString().substr(index)
-	    .substring(
-			index, 
-			str.toString().indexOf("@")
-		)
-		let scenarioTitle = scenarioPreString.substr(
-			scenarioPreString.indexOf("'")).replace("'", "");
+        let remainingString = str.substr(index);
+        let scenarioTitle = remainingString.substr(
+        	10, remainingString.substr(10).indexOf("'")
+        )
+
+        console.log(scenarioTitle)
 
 		scenario.title = scenarioTitle;
 
-		console.log(scenario)
-
 		scenarios.push(scenario)
     }
-
-    // console.log(indices);
-
-  //   indices.forEach(scenarioIndex => {
-  //   	let scenario = {};
-  //   	// console.log(data.toString())
-	 //    let scenarioPreString = data.toString().substring(
-		// 	scenarioIndex, 
-		// 	data.toString().indexOf("@")
-		// )
-		// let scenarioTitle = scenarioPreString.substr(
-		// 	scenarioPreString.indexOf("'")).replace("'", "");
-
-		// scenario.title = scenarioTitle;
-
-		// console.log(scenario)
-
-		// scenarios.push(scenario)
-  //   })
-
-    // console.log(scenarios);
 
 	return scenarios;
 }
