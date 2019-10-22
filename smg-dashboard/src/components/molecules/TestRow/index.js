@@ -4,6 +4,8 @@ import {
 	TableRow,
 	Button 
 } from '@material-ui/core';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import CancelIcon from '@material-ui/icons/Cancel';
 
 import api from '../../../api';
 
@@ -33,9 +35,17 @@ class TestRow extends React.Component {
 		return (
 			<TableRow className="testRow">
 				<TableCell>{scenario.title}</TableCell>
-				{beenRun && (
-					<TableCell>{passed ? 'PASSED' : 'FAILED'}</TableCell>
-				)}
+				<TableCell align='center'>
+				{!beenRun ? (
+					'N/A'
+				) : 
+					passed ? (
+						<CheckCircleIcon style={{color: '#71FC9D'}} /> 
+					) : (
+						<CancelIcon style={{color: '#FF6B6B'}} />
+					)
+				}
+				</TableCell>
 				<TableCell>
 					<Button
 						onClick={this.runTest}
