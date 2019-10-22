@@ -6,22 +6,30 @@ var spawn = require('child_process').spawn
 module.exports = {
 
 	automate: function(scenario) {
-		var command = 'cd bot && npm run automate -- --grep "' + scenario.scenario + '"';
+		return new Promise((resolve, reject) => {
 
-		var browserProcess = exec(command);
+			var command = 'cd bot && npm run automate -- --grep "' + scenario.scenario + '"';
 
-		browserProcess.stdout.on('data', function (data) {
-		  console.log(data.toString());
-		});
+			var browserProcess = exec(command);
 
-		browserProcess.stderr.on('data', function (data) {
-		  console.log('ERR: ' + data.toString());
-		});
+			browserProcess.stdout.on('data', function (data) {
+			    console.log(data.toString());
+			});
 
-		browserProcess.on('exit', function (code) {
-		  console.log('Child process exited with code ' + code.toString());
-		});
+			browserProcess.stderr.on('data', function (data) {
+			    console.log('ERR: ' + data.toString());
+			});
 
-		return;
+			let passed = false;
+
+			browserProcess.on('exit', function (code) {
+				console.log('Child process exited with code ' + code.toString());
+				if (code === 0) {
+				  	passed = true
+				}
+				resolve(passed);
+			});
+		})
 	}
+
 }

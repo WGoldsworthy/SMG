@@ -6,9 +6,10 @@ const api = axios.create({
 
 
 api.automate = (scenario) => {
-	console.log(scenario);
-	api.post('/automate', {scenario: scenario.title}).then(res => {
-		// console.log(res);
+	return new Promise((resolve, reject) => {
+		api.post('/automate', {scenario: scenario.title}).then(res => {
+			resolve(res.data);
+		});
 	})
 }
 

@@ -12,8 +12,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.post('/automate', (req, res) => {
-  automator.automate(req.body);
-  res.send();
+  automator.automate(req.body).then(passed => {
+  	res.send({passed: passed});
+  });
 })
 
 app.get('/tests/scenarios', (req, res) => {

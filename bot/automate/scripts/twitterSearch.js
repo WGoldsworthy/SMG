@@ -10,7 +10,7 @@ Scenario('Load test scenarios and check they appear @loadtest',
 )
 
 Scenario('Load tests and check the run button appears @loadtestbutton', 
-	(I) -> {
+	(I) => {
 		I.amOnPage('http://localhost:3000');
 		I.see('Search');
 		I.waitForElement('testRow');

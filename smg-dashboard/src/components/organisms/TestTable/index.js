@@ -12,7 +12,6 @@ class TestTable extends React.Component {
 
 	render() {
 		const { scenarios } = this.props;
-		console.log(scenarios)
 		return (
 			<Table className="testTable">
 				<TableBody>
